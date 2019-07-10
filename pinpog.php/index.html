@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<script src="js-dos.js"></script>
+<style>
+canvas {
+width: 640px;
+height: 400px;
+}
+</style>
+</head>
+<body>
+<canvas id="jsdos"></canvas>
+<script>
+  Dos(document.getElementById("jsdos"), {
+    onprogress: (stage, total, loaded) => {}
+  }).ready((fs, main) => {
+    fs.extract("pinpog.zip").then(() => {
+      main(["-c", "BOOT pinpog.img -l A"]);
+      document.title = "pinpog";
+    });
+  });
+</script>
+</body>
+</html>
